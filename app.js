@@ -65,14 +65,16 @@ function solicitarProducto() {
     do {
         id = prompt("Ingrese el ID del producto que desea agregar:");
 
+        console.log('pineapple')
         // Buscar el producto en el arreglo de productos
         productoEncontrado = productos.find((producto) => producto.id === id);
 
         if (!productoEncontrado) {
-            alert("El ID del producto ingresado no es válido.");
+            alert("");
         } else {
-            let respuesta = prompt("¿Desea agregar este producto? (si/no)");
-
+            let respuesta = prompt("¿Desea agregar otro producto? (si/no)");
+            debugger
+            console.log('hola')
             while (respuesta !== "si" && respuesta !== "no") {
                 respuesta = prompt(
                     'La respuesta ingresada no es válida. Por favor ingrese "si" o "no".'
