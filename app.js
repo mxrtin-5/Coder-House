@@ -56,39 +56,44 @@ const productos = [
     }
 ];
 
+
+
 // Función para solicitar al usuario un producto por su ID
+let carrito = [];
+
 function solicitarProducto() {
-    let productoEncontrado = null;
-    let id;
-    let continuar = true;
 
-    do {
-        id = prompt("Ingrese el ID del producto que desea agregar:");
+    let productoSeleccionado = prompt('Ingrese el ID del producto que desea')
+    productoSeleccionado = productos.find((producto) => producto.id === productoSeleccionado);
 
-        console.log('pineapple')
-        // Buscar el producto en el arreglo de productos
-        productoEncontrado = productos.find((producto) => producto.id === id);
+    if(!productoSeleccionado){ // comprueba si el valor es falsy, es decir, si es null, undefined, 0, '', false, o NaN. Si productoSeleccionado es falsy, significa que el ID de producto ingresado no es válido, por lo que se muestra una alerta al usuario indicando que el ID es inválido y la función retorna null. 
+        productoseleccionado = prompt('El ID ingresado es invalido, por favor vuelva a ingresar un ID valido');
+    }
 
-        if (!productoEncontrado) {
-            alert("");
-        } else {
-            let respuesta = prompt("¿Desea agregar otro producto? (si/no)");
-            debugger
-            console.log('hola')
-            while (respuesta !== "si" && respuesta !== "no") {
-                respuesta = prompt(
-                    'La respuesta ingresada no es válida. Por favor ingrese "si" o "no".'
-                );
-            }
-
-            if (respuesta === "no") {
-                continuar = false;
-            }
-        }
-    } while (continuar);
-
-    return productoEncontrado;
+    carrito.push(productoSeleccionado);
+    return productoSeleccionado;
 }
+
+const cargarProductos = () =>{
+    let seguir;
+    let total = 0;
+    do{
+        const producto = solicitarProducto(); // para poder obtener el objeto producto que se seleccionó y luego poder agregarlo al carrito de compras
+        seguir = prompt('Desea ingresar otro producto si/no');
+
+        if(seguir !== 'si' && seguir !== 'no'){
+        seguir = prompt('Error, debe ingresar si o no');
+        }
+
+        if (producto && seguir === 'no'){ //El parámetro producto se refiere al resultado devuelto por la función solicitarProducto(), verifica si el usuario ha ingresado productos antes de decidir no ingresar mas
+            total = sumarProductos(carrito)
+            alert(`El total de los productos seleccionados es: $${total}`);
+        }
+
+    }while(seguir == 'si')
+}
+
+
 
 // Función para sumar el precio total de los productos ingresados
 function sumarProductos(productos) {
@@ -101,27 +106,6 @@ function sumarProductos(productos) {
     return total;
 }
 
-// Función principal del programa
-function main() {
-    const productosSeleccionados = [];
-
-    // Solicitar al usuario productos hasta que decida terminar
-    while (true) {
-        const producto = solicitarProducto();
-
-        if (!producto) {
-            break;
-        }
-
-        productosSeleccionados.push(producto);
-    }
-
-    // Calcular el precio total de los productos seleccionados
-    const total = sumarProductos(productosSeleccionados);
-
-    // Mostrar el resultado al usuario
-    alert(`El total de los productos seleccionados es: $${total}`);
-}
 
 // Ejecutar el programa
-main();
+cargarProductos()
