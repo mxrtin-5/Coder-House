@@ -1,31 +1,3 @@
-// se precisa que el usuario ingrese el precio de la cantidad de productos que quiera y el programa al final realice una sumatoria de todos los productos
-/*
-let total = 0;
-let continuar = true;
-
-while (continuar) {
-    let precio = parseFloat(prompt('Ingrese el precio del producto'));
-
-    // Validación del precio
-    while (isNaN(precio) || precio < 0) {
-        precio = parseFloat(prompt('Precio inválido. Ingrese el precio del producto'));
-    }
-
-    total += precio;
-    
-    let respuesta = prompt('¿Desea continuar ingresando productos? (S/N)');
-
-    while (respuesta.toUpperCase() !== 'S' && respuesta.toUpperCase() !== 'N') {
-        respuesta = prompt('Respuesta inválida. ¿Desea continuar ingresando productos? (S/N)');
-    }
-
-    if (respuesta.toUpperCase() === 'N') {
-        continuar = false;
-    }
-}
-
-alert(`El total de la compra es: ${total}`);
-*/
 
 
 const productos = [
