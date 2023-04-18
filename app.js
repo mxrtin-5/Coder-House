@@ -23,9 +23,26 @@ const productos = [
     },
     {
         id: 'Vestido-05',
-        nombre: 'Minerve Dress',
+        nombre: 'Arcana Dress',
+        precio: 50000
+    },
+    {
+        id: 'Vestido-06',
+        nombre: 'Shadow Forest Dress',
+        precio: 80000
+    },
+    {
+        id: 'Vestido-07',
+        nombre: 'Monroe Dress',
+        precio: 60000
+    },
+    {
+        id: 'Vestido-08',
+        nombre: 'Minerva Dress',
         precio: 35000
     }
+    
+    
 ];
 
 
