@@ -139,6 +139,34 @@ header {
 }
 
 .dark-body h4{
+    color: #fff !important; 
+}
+
+.dark-body h3{
+    color: #fff !important; 
+}
+
+.dark-body h2{
+    color: #fff !important; 
+}
+
+.dark-body p{
+    color: #fff !important;
+}
+
+.dark-client-reviews{
+    background: #222222;
+}
+
+.dark-contact{
+    background: #0e0e0e;
+}
+
+.dark-end-text{
+    background: #1d1d1d;
+}
+
+.dark-end-text p{
     color: #fff;
 }
 
