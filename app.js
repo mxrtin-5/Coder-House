@@ -1,5 +1,66 @@
+// ---------------- counter seguidores ----------
+
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(item => {
+    item.innerText = "0"
+    const target = + item.getAttribute("data-target");
+    const interval = target / 100
+    const updateCounter = () => {
+        const value = +item.innerText;
+        if (value < target) {
+            item.innerText = Math.ceil(value + interval);
+            setTimeout(() => {
+                updateCounter()
+            }, 20);
+        }
+    }
+    updateCounter();
+});
 
 
+// ------------------- modo oscuro -------------
+
+let boton = document.querySelector('.switch');
+let circulo = document.querySelector('.circulo');
+let header = document.querySelector('header');
+let productos = document.querySelector('.trending-product');
+let h2 = document.querySelector('.center-text');
+let container = document.querySelector('body');
+
+let mode = "light"
+
+function lightMode(){
+    boton.className = 'switch';
+    circulo.className = 'circulo'
+    header.className = 'header';
+    productos.className = 'trending-product';
+    h2.className = 'center-text h2';
+    container.className = 'body'
+}
+
+function darkMode(){
+    boton.className = 'dark-switch';
+    circulo.className = 'dark-circulo';
+    header.className = 'dark-header';
+    productos.className = 'dark-trending-product';
+    h2.className = 'dark-center-text h2';
+    container.className = 'dark-body';
+
+}
+
+circulo.addEventListener('click', () =>{
+    if(mode === 'light'){
+        darkMode()
+        mode = 'dark'
+    }else{
+        lightMode()
+        mode = 'light'
+    }
+})
+
+
+/*
 const productos = [
     {
         id: 'Vestido-01',
@@ -98,3 +159,4 @@ function sumarProductos(productos) {
 
 // Ejecutar el programa
 cargarProductos()
+*/
