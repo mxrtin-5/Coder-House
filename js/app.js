@@ -107,7 +107,7 @@ misProductos.forEach((producto) => {
     shopContent.append(divProducto)
 
     let comprar = document.createElement('a');
-    comprar.className = "add";
+    comprar.classList.add('add');
     comprar.innerHTML = `
 <i class="fa-solid fa-cart-plus"></i>
 `
