@@ -202,6 +202,8 @@ header {
     box-shadow: none;
 }
 
+/* home */
+
 section {
     padding: 5% 10%;
 }
@@ -300,11 +302,12 @@ header.sticky {
     color: blueviolet;
 }
 
-.products {
+.shopContent {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     gap: 2rem;
 }
+
 
 .row {
     position: relative;
@@ -313,8 +316,9 @@ header.sticky {
 
 .row img {
     width: 100%;
-    height: auto;
+    height: 400px;
     transition: all .40s;
+    border-radius: 30%;
 }
 
 .row img:hover {
@@ -323,6 +327,7 @@ header.sticky {
 
 .add {
     font-size: 30px;
+    cursor: pointer;
 }
 
 .product-text h5 {
@@ -746,4 +751,56 @@ header.sticky {
 
 .counter__text {
     font-size: 0.7rem;
+}
+
+/* carrito */
+
+.modal-container{
+    width: 80%;
+    margin: 0 10%;
+    color: #fff;
+    background:#0e0e0e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    overflow: auto;
+    z-index: 100;
+    scrollbar-color: none;
+}
+
+.modal-container::-webkit-scrollbar{
+    display: none;
+}
+
+.header-modal{
+    display: flex;
+    justify-content: space-around;
+    background-color: #0e0e0e;
+    color: #fff;
+    width: 100%;
+}
+
+.header-modal .titulo-modal{
+    justify-self: start;
+}
+
+.modal-header-button{
+    cursor: pointer;
+}
+
+.modal-container .modal-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    margin: 10px;
+}
+
+.total-compra{
+    font-size: 25px;
+    padding: 20px;
+    text-align: center;
+    padding-top: 20px;
 }

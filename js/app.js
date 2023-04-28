@@ -33,7 +33,7 @@ let footer = document.querySelector('.end-text');
 
 let mode = "light"
 
-function lightMode(){
+function lightMode() {
     boton.className = 'switch';
     circulo.className = 'circulo'
     header.className = 'header';
@@ -45,7 +45,7 @@ function lightMode(){
     footer.className = 'end-text';
 }
 
-function darkMode(){
+function darkMode() {
     boton.className = 'dark-switch';
     circulo.className = 'dark-circulo';
     header.className = 'dark-header';
@@ -58,68 +58,107 @@ function darkMode(){
 
 }
 
-circulo.addEventListener('click', () =>{
-    if(mode === 'light'){
+circulo.addEventListener('click', () => {
+    if (mode === 'light') {
         darkMode()
         mode = 'dark'
-    }else{
+    } else {
         lightMode()
         mode = 'light'
     }
 })
 
 
+//Productos//
+
+const carrito = [];
 
 
-// Función para solicitar al usuario un producto por su ID
-let carrito = [];
+const shopContent = document.getElementById('shopContent');
+const verCarrito = document.getElementById('verCarrito');
+const modalContainer = document.getElementById('modal-container')
 
-function solicitarProducto() {
+misProductos.forEach((producto) => {
+    const divProducto = document.createElement('div');
+    divProducto.className = 'products';
+    divProducto.innerHTML = `
+    <div class="row">
+    <img src="img/${producto.id}.jpg" alt="">
+    <div class="heart-icon">
+        <i class='bx bx-heart'></i>
+    </div>
+    <div class="ratting">
+        <i class='bx bx-star'></i>
+        <i class='bx bx-star'></i>
+        <i class='bx bx-star'></i>
+        <i class='bx bx-star'></i>
+        <i class='bx bxs-star-half'></i>
+    </div>
 
-    let productoSeleccionado = prompt('Ingrese el ID del producto que desea')
-    productoSeleccionado = producto.find((producto) => producto.id === productoSeleccionado);
+    <div class="price">
+        <h4>${producto.nombre} <br> ID: ${producto.id}</h4>
+        <p>$${producto.precio}</p>
+    </div>
+    </div>
+    
 
-    if(!productoSeleccionado){ // comprueba si el valor es falsy, es decir, si es null, undefined, 0, '', false, o NaN. Si productoSeleccionado es falsy, significa que el ID de producto ingresado no es válido, por lo que se muestra una alerta al usuario indicando que el ID es inválido y la función retorna null. 
-        productoseleccionado = prompt('El ID ingresado es invalido, por favor vuelva a ingresar un ID valido');
-    }
+`
 
-    carrito.push(productoSeleccionado);
-    return productoSeleccionado;
-}
+    shopContent.append(divProducto)
 
-const cargarProductos = () =>{
-    let seguir;
-    let total = 0;
-    do{
-        const producto1 = solicitarProducto(); // para poder obtener el objeto producto que se seleccionó y luego poder agregarlo al carrito de compras
-        seguir = prompt('Desea ingresar otro producto si/no');
+    let comprar = document.createElement('a');
+    comprar.className = "add";
+    comprar.innerHTML = `
+<i class="fa-solid fa-cart-plus"></i>
+`
 
-        if(seguir !== 'si' && seguir !== 'no'){
-        seguir = prompt('Error, debe ingresar si o no');
-        }
+    divProducto.append(comprar);
 
-        if (producto1 && seguir === 'no'){ //El parámetro producto se refiere al resultado devuelto por la función solicitarProducto(), verifica si el usuario ha ingresado productos antes de decidir no ingresar mas
-            total = sumarProductos(carrito)
-            alert(`El total de los productos seleccionados es: $${total}`);
-        }
+    comprar.addEventListener('click', () => {
+        carrito.push({
+            id: producto.id,
+            nombre: producto.nombre,
+            precio: producto.precio
+        });
+        console.log(carrito)
+    });
+});
 
-    }while(seguir == 'si')
-}
+verCarrito.addEventListener('click', () => {
+    const headerModal = document.createElement('div');
+    headerModal.className = 'header-modal';
+    headerModal.innerHTML = `
+    <h2 class='titulo-modal'> Your cart </h2> 
+    `;
 
+    modalContainer.append(headerModal);
 
+    const botonModal = document.createElement('h4');
+    botonModal.innerText = 'X';
+    botonModal.className = 'modal-header-button';
 
-// Función para sumar el precio total de los productos ingresados
-function sumarProductos(productos) {
-    let total = 0;
+    headerModal.append(botonModal);
 
-    for (const producto of productos) {
-        total += producto.precio;
-    }
+    carrito.forEach((product)=>{
+        let contenidoCarrito = document.createElement('div');
+        contenidoCarrito.className = "modal-content";
+        contenidoCarrito.innerHTML = `
+        <h3>${product.nombre}</h3>
+        <p>$${product.precio}</P>
+        <p>${product.cantidad}</p>
+        `
 
-    return total;
-}
+        modalContainer.append(contenidoCarrito);
+    });
 
+    const total = carrito.reduce((acc,el)=> acc + el.precio, 0); // acc es el acumulador, y el (elemento), siendo el cada elemento de los productos creados
 
-// Ejecutar el programa
-cargarProductos()
+    const totalCompra = document.createElement('div');
+    totalCompra.className = 'total-compra';
+    totalCompra.innerHTML = `
+    Total compra: $${total}
+    `;
+
+    modalContainer.append(totalCompra);
+});
 
