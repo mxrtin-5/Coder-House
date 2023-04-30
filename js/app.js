@@ -71,16 +71,16 @@ circulo.addEventListener('click', () => {
 
 //Productos//
 
-const carrito = [];
+const carrito = []; // se inicia el array carrito en vacio
 
 
 const shopContent = document.getElementById('shopContent');
 const verCarrito = document.getElementById('verCarrito');
 const modalContainer = document.getElementById('modal-container')
 
-misProductos.forEach((producto) => {
-    const divProducto = document.createElement('div');
-    divProducto.className = 'products';
+misProductos.forEach((producto) => { // misProductos es el array de productos, por cada "producto" del mismo ejecuta la siguiente funcion
+    const divProducto = document.createElement('div');// crea un div
+    divProducto.className = 'products';//de clase productos, con el siguiente codigo html
     divProducto.innerHTML = `
     <div class="row">
     <img src="img/${producto.id}.jpg" alt="">
@@ -104,28 +104,28 @@ misProductos.forEach((producto) => {
 
 `
 
-    shopContent.append(divProducto)
+    shopContent.append(divProducto)// a shop content se le pega divproducto
 
-    let comprar = document.createElement('a');
-    comprar.classList.add('add');
+    let comprar = document.createElement('a'); // se crea un a de manera dinamica
+    comprar.classList.add('add');// de classe 'add'
     comprar.innerHTML = `
 <i class="fa-solid fa-cart-plus"></i>
 `
 
-    divProducto.append(comprar);
+    divProducto.append(comprar);// se lo pega al divproducto    
 
-    comprar.addEventListener('click', () => {
-        carrito.push({
+    comprar.addEventListener('click', () => { // a comprar se le pasa un escuchador de eventos, el vento es el click
+        carrito.push({//mediante el metodo push se le agrega lo siguiente al carrito
             id: producto.id,
             nombre: producto.nombre,
-            precio: producto.precio,
+            precio: producto.precio,//todo esto
             cantidad: producto.cantidad
         });
         console.log(carrito)
     });
 });
 
-verCarrito.addEventListener('click', () => {
+verCarrito.addEventListener('click', () => { //a verCarrito se le pasa el avento click que ejecuta lo siguiente
     modalContainer.style.display = 'flex'
     const headerModal = document.createElement('div');
     headerModal.className = 'carrito';
@@ -154,11 +154,6 @@ verCarrito.addEventListener('click', () => {
         contenidoCarrito.innerHTML = `
         <div class="carrito-item-detalles">
         <span class="carrito-item-titulo">${product.nombre}</span>
-        <div class="selector-cantidad">
-            <i class="fa-solid fa-minus restar-cantidad"></i>
-            <input type="text" value="1" class="carrito-item-cantidad" disabled>
-            <i class="fa-solid fa-plus sumar-cantidad"></i>
-        </div>
         <span class="carrito-item-precio">$${product.precio}</span>
     </div>
     <span class="btn-eliminar"> <i id='eliminar-${product.id}' class="fa-solid fa-trash"></i></span>
@@ -168,16 +163,17 @@ verCarrito.addEventListener('click', () => {
     headerModal.append(contenidoCarrito);
     });
 
-    const btnEliminar = document.getElementById(`eliminar-${product.id}`);
-    btnEliminar.addEventListener('click', eliminarProducto);
+    carrito.forEach(producto =>{
+        const btnEliminar = document.getElementById(`eliminar-${producto.id}`);
+        btnEliminar.addEventListener('click', () => eliminarProducto(producto));
+    });
 
-    const eliminarProducto = ()=>{ // en funcion eliminar carrito 
-        const findId = carrito.find((elemento) => elemento.id); // se crea una constante y eso se iguala a que se busque en el carrito (element representa a cada elemento ), su id
-        //cuando lo encuentra
-        carrito = carrito.filter((carritoId)=>{
-            return carritoId !== findId;
-        });
+    const eliminarProducto = (product) =>{
+        const indice = carrito.findIndex(producto => producto.id === product.id);
+        carrito.splice(indice, 1);
     }
+
+
 
     
     const total = carrito.reduce((acc, el) => acc + el.precio, 0); // acc es el acumulador, y el (elemento), siendo el cada elemento de los productos creados
