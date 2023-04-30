@@ -119,7 +119,6 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
             id: producto.id,
             nombre: producto.nombre,
             precio: producto.precio,//todo esto
-            cantidad: producto.cantidad
         });
         console.log(carrito)
     });
