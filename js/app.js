@@ -102,15 +102,15 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
     </div>
     
 
-`
+` 
 
     shopContent.append(divProducto)// a shop content se le pega divproducto
 
     let comprar = document.createElement('a'); // se crea un a de manera dinamica
     comprar.classList.add('add');// de classe 'add'
     comprar.innerHTML = `
-<i class="fa-solid fa-cart-plus"></i>
-`
+    <i class="fa-solid fa-cart-plus"></i>
+    `
 
     divProducto.append(comprar);// se lo pega al divproducto    
 
@@ -120,61 +120,66 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
             nombre: producto.nombre,
             precio: producto.precio,//todo esto
         });
-        console.log(carrito)
+        console.log(carrito);
     });
 });
 
 verCarrito.addEventListener('click', () => { //a verCarrito se le pasa el avento click que ejecuta lo siguiente
-    modalContainer.style.display = 'flex'
-    const headerModal = document.createElement('div');
-    headerModal.className = 'carrito';
+    modalContainer.style.display = 'flex'// se le da un display flex
+    const headerModal = document.createElement('div');// se crea un div
+    headerModal.className = 'carrito';//de clase carrito, con el siguiente contenido
     headerModal.innerHTML = `
     <div class="header-carrito">
     <h2 class='titulo-modal'> Your cart </h2> 
     </div>
     `;
+    renderizarCarrito();
 
-    modalContainer.append(headerModal);
 
-    const botonModal = document.createElement('i');
+    modalContainer.append(headerModal);// se le conecta estecontenido al header del modal
+
+    const botonModal = document.createElement('i');// se crea un elemento que sera el botono para cerrar el carrito
     botonModal.innerHTML = '<i id="cancelar" class="fa-solid fa-x"></i>';
     botonModal.className = 'modal-header-button';
 
-    botonModal.addEventListener("click", () => {
+    botonModal.addEventListener("click", () => {// se le agrega el evento para poder efectivamente cerrar 
         modalContainer.style.display = 'none'
         modalContainer.innerHTML = ''
-    })
+    });
 
-    headerModal.append(botonModal);
+    headerModal.append(botonModal);// se lo inserta al header del modal
 
-    carrito.forEach((product) => {
-        let contenidoCarrito = document.createElement('div');
-        contenidoCarrito.className = "carrito-item";
-        contenidoCarrito.innerHTML = `
+    const renderizarCarrito = () => {
+        carrito.forEach((product) => {// por cada elemento del carrito se ejecuta lo siguiente
+            let contenidoCarrito = document.createElement('div');/// se crea una variable que sera igual a un div creado dinamicamente
+            contenidoCarrito.className = "carrito-item";// con esta clase y el siguiente contenido
+            contenidoCarrito.innerHTML = `
         <div class="carrito-item-detalles">
         <span class="carrito-item-titulo">${product.nombre}</span>
         <span class="carrito-item-precio">$${product.precio}</span>
     </div>
     <span class="btn-eliminar"> <i id='eliminar-${product.id}' class="fa-solid fa-trash"></i></span>
 </div>
-        `
+        `// se genera un id dinamicamente por cada elemento agregado al carrito
 
-    headerModal.append(contenidoCarrito);
+            headerModal.append(contenidoCarrito);// se lo agrega al headermodal
+        })
+    };
+
+    carrito.forEach(producto => { // por cada elemento del carrito se ejecuta lo siguiente
+        const btnEliminar = document.getElementById(`eliminar-${producto.id}`);// se crea la variable btnEliminar que se iguala al id creado dinamicamente anteriormente
+        btnEliminar.addEventListener('click', () => eliminarProducto(producto));// a esa variable se le asigna el evento click que ejecuta la siguiente funcion
     });
 
-    carrito.forEach(producto =>{
-        const btnEliminar = document.getElementById(`eliminar-${producto.id}`);
-        btnEliminar.addEventListener('click', () => eliminarProducto(producto));
-    });
-
-    const eliminarProducto = (product) =>{
+    const eliminarProducto = (product) => {
         const indice = carrito.findIndex(producto => producto.id === product.id);
-        carrito.splice(indice, 1);
+        carrito.splice(indice, 1)
+        renderizarCarrito();
     }
 
 
 
-    
+
     const total = carrito.reduce((acc, el) => acc + el.precio, 0); // acc es el acumulador, y el (elemento), siendo el cada elemento de los productos creados
 
     const totalCompra = document.createElement('div');
