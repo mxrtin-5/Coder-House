@@ -161,19 +161,23 @@ verCarrito.addEventListener('click', () => {
         </div>
         <span class="carrito-item-precio">$${product.precio}</span>
     </div>
+    <span class="btn-eliminar"> <i id='eliminar-${product.id}' class="fa-solid fa-trash"></i></span>
 </div>
         `
 
     headerModal.append(contenidoCarrito);
     });
 
-    
-    let eliminar = document.createElement('span');
-    eliminar.innerHTML = `
-    <i class="fa-solid fa-trash"></i>`
-    eliminar.className = 'btn-eliminar';
+    const btnEliminar = document.getElementById(`eliminar-${product.id}`);
+    btnEliminar.addEventListener('click', eliminarProducto);
 
-    headerModal.append(eliminar);
+    const eliminarProducto = ()=>{ // en funcion eliminar carrito 
+        const findId = carrito.find((elemento) => elemento.id); // se crea una constante y eso se iguala a que se busque en el carrito (element representa a cada elemento ), su id
+        //cuando lo encuentra
+        carrito = carrito.filter((carritoId)=>{
+            return carritoId !== findId;
+        });
+    }
 
     
     const total = carrito.reduce((acc, el) => acc + el.precio, 0); // acc es el acumulador, y el (elemento), siendo el cada elemento de los productos creados
