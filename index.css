@@ -87,6 +87,7 @@ header {
     justify-content: space-between;
     padding: 20px 14%;
     transition: all .5s ease;
+    color: #e2e1e1;
 }
 
 .switch {
