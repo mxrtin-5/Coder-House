@@ -118,40 +118,65 @@ misProductos.forEach((producto) => {
         carrito.push({
             id: producto.id,
             nombre: producto.nombre,
-            precio: producto.precio
+            precio: producto.precio,
+            cantidad: producto.cantidad
         });
         console.log(carrito)
     });
 });
 
 verCarrito.addEventListener('click', () => {
+    modalContainer.style.display = 'flex'
     const headerModal = document.createElement('div');
-    headerModal.className = 'header-modal';
+    headerModal.className = 'carrito';
     headerModal.innerHTML = `
+    <div class="header-carrito">
     <h2 class='titulo-modal'> Your cart </h2> 
+    </div>
     `;
 
     modalContainer.append(headerModal);
 
-    const botonModal = document.createElement('h4');
-    botonModal.innerText = 'X';
+    const botonModal = document.createElement('i');
+    botonModal.innerHTML = '<i id="cancelar" class="fa-solid fa-x"></i>';
     botonModal.className = 'modal-header-button';
+
+    botonModal.addEventListener("click", () => {
+        modalContainer.style.display = 'none'
+        modalContainer.innerHTML = ''
+    })
 
     headerModal.append(botonModal);
 
-    carrito.forEach((product)=>{
+    carrito.forEach((product) => {
         let contenidoCarrito = document.createElement('div');
-        contenidoCarrito.className = "modal-content";
+        contenidoCarrito.className = "carrito-item";
         contenidoCarrito.innerHTML = `
-        <h3>${product.nombre}</h3>
-        <p>$${product.precio}</P>
-        <p>${product.cantidad}</p>
+        <div class="carrito-item-detalles">
+        <span class="carrito-item-titulo">${product.nombre}</span>
+        <div class="selector-cantidad">
+            <i class="fa-solid fa-minus restar-cantidad"></i>
+            <input type="text" value="1" class="carrito-item-cantidad" disabled>
+            <i class="fa-solid fa-plus sumar-cantidad"></i>
+        </div>
+        <span class="carrito-item-precio">$${product.precio}</span>
+    </div>
+</div>
         `
 
-        modalContainer.append(contenidoCarrito);
+    headerModal.append(contenidoCarrito);
     });
 
-    const total = carrito.reduce((acc,el)=> acc + el.precio, 0); // acc es el acumulador, y el (elemento), siendo el cada elemento de los productos creados
+    
+    let eliminar = document.createElement('span');
+    eliminar.innerHTML = `
+    <i class="fa-solid fa-trash"></i>`
+    eliminar.className = 'btn-eliminar';
+
+    headerModal.append(eliminar);
+
+    
+    const total = carrito.reduce((acc, el) => acc + el.precio, 0); // acc es el acumulador, y el (elemento), siendo el cada elemento de los productos creados
 
     const totalCompra = document.createElement('div');
     totalCompra.className = 'total-compra';
@@ -159,6 +184,6 @@ verCarrito.addEventListener('click', () => {
     Total compra: $${total}
     `;
 
-    modalContainer.append(totalCompra);
+    headerModal.append(totalCompra);
 });
 
