@@ -71,12 +71,12 @@ circulo.addEventListener('click', () => {
 
 //Productos//
 
-const carrito = JSON.parse(localStorage.getItem('carrito')) || []; // se inicia el array carrito en vacio
+let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // se inicia el array carrito en vacio
 
 
 const shopContent = document.getElementById('shopContent');
 const verCarrito = document.getElementById('verCarrito');
-const modalContainer = document.getElementById('modal-container')
+const modalContainer = document.getElementById('modal-container');
 
 misProductos.forEach((producto) => { // misProductos es el array de productos, por cada "producto" del mismo ejecuta la siguiente funcion
     const divProducto = document.createElement('div');// crea un div
@@ -114,7 +114,13 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
 
     divProducto.append(comprar);// se lo pega al divproducto    
 
-    comprar.addEventListener('click', () => { // a comprar se le pasa un escuchador de eventos, el vento es el click
+    comprar.addEventListener('click', () => {
+        // a comprar se le pasa un escuchador de eventos, el vento es el click
+        Swal.fire({
+            icon: 'success',
+            title: 'Added to the cart',
+            timer: 1500
+        })
         carrito.push({//mediante el metodo push se le agrega lo siguiente al carrito
             id: producto.id,
             nombre: producto.nombre,
@@ -181,6 +187,17 @@ verCarrito.addEventListener('click', () => { //a verCarrito se le pasa el avento
     `;
 
         headerModal.append(totalCompra);
+
+        const pagarBtn = document.createElement('button');
+        pagarBtn.className = 'btn-pagar';
+        pagarBtn.innerHTML = '<i class="fa-solid fa-bag-shopping">Pagar</i>'
+
+        headerModal.append(pagarBtn);
+
+        pagarBtn.onclick = ()=>{
+            carrito = []
+            contenidoCarrito.innerHTML = ''
+        }
 
         carrito.forEach(producto => { // por cada elemento del carrito se ejecuta lo siguiente
             const btnEliminar = document.getElementById(`eliminar-${producto.id}`);// se crea la variable btnEliminar que se iguala al id creado dinamicamente anteriormente
