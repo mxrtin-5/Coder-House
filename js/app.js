@@ -78,6 +78,74 @@ const shopContent = document.getElementById('shopContent');
 const verCarrito = document.getElementById('verCarrito');
 const modalContainer = document.getElementById('modal-container');
 
+const renderizarCarrito = () => {
+
+    modalContainer.innerHTML = ""
+    modalContainer.style.display = 'flex'// se le da un display flex
+    const headerModal = document.createElement('div');// se crea un div
+    headerModal.className = 'carrito';//de clase carrito, con el siguiente contenido
+    headerModal.innerHTML = `
+    <div class="header-carrito">
+    <h2 class='titulo-modal'> Your cart </h2> 
+    </div>
+    `;
+
+
+    modalContainer.append(headerModal);// se le conecta estecontenido al header del modal
+
+    const botonModal = document.createElement('i');// se crea un elemento que sera el botono para cerrar el carrito
+    botonModal.innerHTML = '<i id="cancelar" class="fa-solid fa-x"></i>';
+    botonModal.className = 'modal-header-button';
+
+    botonModal.addEventListener("click", () => {// se le agrega el evento para poder efectivamente cerrar 
+        modalContainer.style.display = 'none'
+        modalContainer.innerHTML = ''
+    });
+
+    headerModal.append(botonModal);// se lo inserta al header del modal
+
+    carrito.forEach((product) => {// por cada elemento del carrito se ejecuta lo siguiente
+        let contenidoCarrito = document.createElement('div');/// se crea una variable que sera igual a un div creado dinamicamente
+        contenidoCarrito.className = "carrito-item";// con esta clase y el siguiente contenido
+        contenidoCarrito.innerHTML = `
+    <div class="carrito-item-detalles">
+    <span class="carrito-item-titulo">${product.nombre}</span>
+    <span class="carrito-item-precio">$${product.precio}</span>
+</div>
+<span class="btn-eliminar"> <i id='eliminar-${product.id}' class="fa-solid fa-trash"></i></span>
+</div>
+    `// se genera un id dinamicamente por cada elemento agregado al carrito
+
+        headerModal.append(contenidoCarrito);// se lo agrega al headermodal
+
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+    });
+
+
+
+    const total = carrito.reduce((acc, el) => acc + el.precio, 0); // acc es el acumulador, y el (elemento), siendo el cada elemento de los productos creados
+
+    const totalCompra = document.createElement('div');
+    totalCompra.className = 'total-compra';
+    totalCompra.innerHTML = `
+Total compra: $${total}
+`;
+
+    headerModal.append(totalCompra);
+
+    const pagarBtn = document.createElement('button');
+    pagarBtn.className = 'btn-pagar';
+    pagarBtn.innerHTML = '<i class="fa-solid fa-bag-shopping">Pagar</i>'
+
+    headerModal.append(pagarBtn);
+
+    carrito.forEach(producto => { // por cada elemento del carrito se ejecuta lo siguiente
+        const btnEliminar = document.getElementById(`eliminar-${producto.id}`);// se crea la variable btnEliminar que se iguala al id creado dinamicamente anteriormente
+        btnEliminar.addEventListener('click', () => eliminarProducto(producto));// a esa variable se le asigna el evento click que ejecuta la siguiente funcion
+    });
+
+};
+
 misProductos.forEach((producto) => { // misProductos es el array de productos, por cada "producto" del mismo ejecuta la siguiente funcion
     const divProducto = document.createElement('div');// crea un div
     divProducto.className = 'products';//de clase productos, con el siguiente codigo html
@@ -112,6 +180,8 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
     <i class="fa-solid fa-cart-plus"></i>
     `
 
+    
+
     divProducto.append(comprar);// se lo pega al divproducto    
 
     comprar.addEventListener('click', () => {
@@ -135,83 +205,11 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
 });
 
 
+
 verCarrito.addEventListener('click', () => { //a verCarrito se le pasa el avento click que ejecuta lo siguiente
 
 
-    const renderizarCarrito = () => {
-
-        modalContainer.innerHTML = ""
-        modalContainer.style.display = 'flex'// se le da un display flex
-        const headerModal = document.createElement('div');// se crea un div
-        headerModal.className = 'carrito';//de clase carrito, con el siguiente contenido
-        headerModal.innerHTML = `
-        <div class="header-carrito">
-        <h2 class='titulo-modal'> Your cart </h2> 
-        </div>
-        `;
-
-
-        modalContainer.append(headerModal);// se le conecta estecontenido al header del modal
-
-        const botonModal = document.createElement('i');// se crea un elemento que sera el botono para cerrar el carrito
-        botonModal.innerHTML = '<i id="cancelar" class="fa-solid fa-x"></i>';
-        botonModal.className = 'modal-header-button';
-
-        botonModal.addEventListener("click", () => {// se le agrega el evento para poder efectivamente cerrar 
-            modalContainer.style.display = 'none'
-            modalContainer.innerHTML = ''
-        });
-
-        headerModal.append(botonModal);// se lo inserta al header del modal
-
-        carrito.forEach((product) => {// por cada elemento del carrito se ejecuta lo siguiente
-            let contenidoCarrito = document.createElement('div');/// se crea una variable que sera igual a un div creado dinamicamente
-            contenidoCarrito.className = "carrito-item";// con esta clase y el siguiente contenido
-            contenidoCarrito.innerHTML = `
-        <div class="carrito-item-detalles">
-        <span class="carrito-item-titulo">${product.nombre}</span>
-        <span class="carrito-item-precio">$${product.precio}</span>
-    </div>
-    <span class="btn-eliminar"> <i id='eliminar-${product.id}' class="fa-solid fa-trash"></i></span>
-</div>
-        `// se genera un id dinamicamente por cada elemento agregado al carrito
-
-            headerModal.append(contenidoCarrito);// se lo agrega al headermodal
-
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-        });
-
-
-
-        const total = carrito.reduce((acc, el) => acc + el.precio, 0); // acc es el acumulador, y el (elemento), siendo el cada elemento de los productos creados
-
-        const totalCompra = document.createElement('div');
-        totalCompra.className = 'total-compra';
-        totalCompra.innerHTML = `
-    Total compra: $${total}
-    `;
-
-        headerModal.append(totalCompra);
-
-        const pagarBtn = document.createElement('button');
-        pagarBtn.className = 'btn-pagar';
-        pagarBtn.innerHTML = '<i class="fa-solid fa-bag-shopping">Pagar</i>'
-
-        headerModal.append(pagarBtn);
-
-        pagarBtn.onclick = () => {
-            carrito = []
-            //contenidoCarrito.innerHTML = ''
-            renderizarCarrito();
-        }
-
-        carrito.forEach(producto => { // por cada elemento del carrito se ejecuta lo siguiente
-            const btnEliminar = document.getElementById(`eliminar-${producto.id}`);// se crea la variable btnEliminar que se iguala al id creado dinamicamente anteriormente
-            btnEliminar.addEventListener('click', () => eliminarProducto(producto));// a esa variable se le asigna el evento click que ejecuta la siguiente funcion
-        });
-
-    };
-
+    
     renderizarCarrito();
 
     const eliminarProducto = (product) => {
@@ -221,3 +219,10 @@ verCarrito.addEventListener('click', () => { //a verCarrito se le pasa el avento
     }
 
 });
+
+
+pagarBtn.onclick = () => {
+    carrito = []
+    //contenidoCarrito.innerHTML = ''
+    renderizarCarrito();
+}
