@@ -115,6 +115,7 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
     divProducto.append(comprar);// se lo pega al divproducto    
 
     comprar.addEventListener('click', () => {
+
         // a comprar se le pasa un escuchador de eventos, el vento es el click
         Swal.fire({
             icon: 'success',
@@ -125,10 +126,14 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
             id: producto.id,
             nombre: producto.nombre,
             precio: producto.precio,//todo esto
+
         });
         console.log(carrito);
+        renderizarCarrito()
     });
+
 });
+
 
 verCarrito.addEventListener('click', () => { //a verCarrito se le pasa el avento click que ejecuta lo siguiente
 
@@ -194,9 +199,10 @@ verCarrito.addEventListener('click', () => { //a verCarrito se le pasa el avento
 
         headerModal.append(pagarBtn);
 
-        pagarBtn.onclick = ()=>{
+        pagarBtn.onclick = () => {
             carrito = []
-            contenidoCarrito.innerHTML = ''
+            //contenidoCarrito.innerHTML = ''
+            renderizarCarrito();
         }
 
         carrito.forEach(producto => { // por cada elemento del carrito se ejecuta lo siguiente
