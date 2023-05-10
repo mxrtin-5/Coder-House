@@ -111,6 +111,7 @@ const renderizarCarrito = () => {
     <div class="carrito-item-detalles">
     <span class="carrito-item-titulo">${product.nombre}</span>
     <span class="carrito-item-precio">$${product.precio}</span>
+    <p> Cantidad: ${product.cantidad} </p>
 </div>
 <span class="btn-eliminar"> <i id='eliminar-${product.id}' class="fa-solid fa-trash"></i></span>
 </div>
@@ -123,7 +124,7 @@ const renderizarCarrito = () => {
 
 
 
-    const total = carrito.reduce((acc, el) => acc + el.precio, 0); // acc es el acumulador, y el (elemento), siendo el cada elemento de los productos creados
+    const total = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0); // acc es el acumulador, y el (elemento), siendo el cada elemento de los productos creados
 
     const totalCompra = document.createElement('div');
     totalCompra.className = 'total-compra';
@@ -139,12 +140,39 @@ Total compra: $${total}
 
     headerModal.append(pagarBtn);
 
+    pagarBtn.onclick = () => {
+        carrito = []
+        swalPagar()
+        renderizarCarrito();
+    }
+
     carrito.forEach(producto => { // por cada elemento del carrito se ejecuta lo siguiente
         const btnEliminar = document.getElementById(`eliminar-${producto.id}`);// se crea la variable btnEliminar que se iguala al id creado dinamicamente anteriormente
         btnEliminar.addEventListener('click', () => eliminarProducto(producto));// a esa variable se le asigna el evento click que ejecuta la siguiente funcion
     });
 
 };
+
+async function swalPagar() {
+    const { value: email } = await Swal.fire({
+        title: 'Input email address',
+        input: 'email',
+        inputLabel: 'Your email address',
+        inputPlaceholder: 'Enter your email address'
+    })
+
+    if (email) {
+        Swal.fire(`Entered email: ${email}`)
+    }
+}
+
+const eliminarProducto = (product) => {
+    const indice = carrito.findIndex(producto => producto.id === product.id);
+    carrito.splice(indice, 1)
+    renderizarCarrito();
+}
+
+
 
 misProductos.forEach((producto) => { // misProductos es el array de productos, por cada "producto" del mismo ejecuta la siguiente funcion
     const divProducto = document.createElement('div');// crea un div
@@ -180,8 +208,6 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
     <i class="fa-solid fa-cart-plus"></i>
     `
 
-    
-
     divProducto.append(comprar);// se lo pega al divproducto    
 
     comprar.addEventListener('click', () => {
@@ -192,12 +218,24 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
             title: 'Added to the cart',
             timer: 1500
         })
-        carrito.push({//mediante el metodo push se le agrega lo siguiente al carrito
-            id: producto.id,
-            nombre: producto.nombre,
-            precio: producto.precio,//todo esto
 
-        });
+        const repeat = carrito.some((repeatProduct) => repeatProduct.id === producto.id)
+
+        if (repeat === true) {
+            carrito.map((prod) => {
+                if (prod.id === producto.id) {
+                    prod.cantidad++
+                }
+            });
+        } else {
+            carrito.push({//mediante el metodo push se le agrega lo siguiente al carrito
+                id: producto.id,
+                nombre: producto.nombre,
+                precio: producto.precio,//todo esto
+                cantidad: producto.cantidad
+
+            });
+        }
         console.log(carrito);
         renderizarCarrito()
     });
@@ -205,24 +243,12 @@ misProductos.forEach((producto) => { // misProductos es el array de productos, p
 });
 
 
-
 verCarrito.addEventListener('click', () => { //a verCarrito se le pasa el avento click que ejecuta lo siguiente
 
 
-    
+
     renderizarCarrito();
 
-    const eliminarProducto = (product) => {
-        const indice = carrito.findIndex(producto => producto.id === product.id);
-        carrito.splice(indice, 1)
-        renderizarCarrito();
-    }
+
 
 });
-
-
-pagarBtn.onclick = () => {
-    carrito = []
-    //contenidoCarrito.innerHTML = ''
-    renderizarCarrito();
-}
