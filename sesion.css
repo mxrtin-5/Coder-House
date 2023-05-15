@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%;
+    text-decoration: none;
+    height: 10vh;
+}
+
+.logo {
+    max-width: 120px;
+    height: auto;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 40px;
+    color: blueviolet;
+}
+
+.navmenu {
+    display: flex;
+}
+
+.navmenu a {
+    color: #2c2c2c;
+    font-size: 16px;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    font-weight: 400;
+    transition: all .42s ease;
+    text-decoration: none;
+}
+
+.navmenu a:hover {
+    color: blueviolet;
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+}
+
+.nav-icon i {
+    margin-right: 20px;
+    color: #2c2c2c;
+    font-size: 25px;
+    font-weight: 400;
+    transition: all .42s ease;
+}
+
+.nav-icon i:hover {
+    transform: scale(1.1);
+    color: blueviolet;
+}
+
+#menu-icon {
+    font-size: 35px;
+    color: #2c2c2c;
+    z-index: 10001;
+    cursor: pointer;
+}
+
+.container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.container input{
+    margin-top: 22px;
+    margin-right: 5px;
+}
+
+.container h2{
+    font-size: 20px;
+}
+
+.container .email{
+    width: 500px;
+    margin-left: 13px;
+}
+
+.div-entrega{
+    display: flex;
+}
+
+.div-entrega .entrega{
+    display: flex;
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+.div-entrega .container-selector h3{
+    display: flex;
+    font-size: 20px;
+    margin-top: 35px;
+}
+
+.div-entrega .container-selector {
+    margin-left: 20px;
+}
+
+.div-entrega .container-selector p{
+    font-size: 12px;
+}
+
+.datos-facturacion h3{
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+.datos-facturacion select{
+    display: block;
+    width: 200px;
+    margin-bottom: 5px;
+    height: 30px;
+}
+
+.datos-facturacion input{
+    width: 200px;
+    height: 40px;
+}
+
+.persona-pedido h4{
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+.persona-pedido input{
+    display: block;
+    margin-top: 10px;
+    width: 500px;
+    height: 40px;
+}
+
+.selector-span{
+    display: flex;
+}
+
+.selector-span h4{
+    font-size: 20px;
+    display: flex;
+    margin-top: 17px;
+    margin-left: 5px;
+}
+
+.selector-span label{
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.domicilio-paga h3{
+    margin-top: 50px;
+}
+
+.domicilio-paga .calle{
+    display: block;
+    width: 500px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.domicilio-paga .numero-container{
+    display: flex;
+    width: 250px;
+}
+
+.domicilio-paga .numero-container .numero{
+    margin-right: 10px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.domicilio-paga .departamento-container{
+    display: flex;
+    width: 250px;
+}
+
+.domicilio-paga .departamento-container .departamento{
+    font-size: 14px;
+    height: 40px;
+}
+
+.domicilio-paga .barrio-container{
+    display: block;
+    width: 500px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.domicilio-paga .barrio-container .barrio{
+    height: 40px;
+    width: 500px;
+}
+
+.domicilio-paga .ciudad-container{
+    display: block;
+    width: 500px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.domicilio-paga .ciudad-container .ciudad{
+    width: 500px;
+    height: 40px;
+}
+
+.domicilio-paga .codigo{
+    display: block;
+    width: 500px;
+    height: 40px;
+    margin-top: 35px;
+}
+
+.domicilio-paga .container-numero-domicilio{
+    max-width: 500px;
+}
+
+input{
+    border-radius: 20px;
+    border: 2px solid #000;
+    transition: all.3s ease;
+}
+
+input:focus{
+    box-shadow:  0 0 20px;
+}
+

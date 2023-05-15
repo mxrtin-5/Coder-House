@@ -154,7 +154,7 @@ Total compra: $${total}
 };
 
 function swalPagar() {
-    window.location.href='sesion.html'
+    window.location.href='./sesion.html'
 }
 
 

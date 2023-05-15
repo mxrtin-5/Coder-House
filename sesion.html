@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sesion.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&family=Poppins:wght@600&family=Raleway:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">AtomicMoonlight</a>
+
+        <ul class="navmenu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Page</a></li>
+            <li><a href="#">Docs</a></li>
+        </ul>
+
+        <div class="nav-icon">
+            <a href="#"><i class='bx bx-search'></i></a>
+            <a href="#"><i class='bx bx-user'></i></a>
+            <a id="verCarrito"><i class='bx bx-cart'></i></a>
+
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="row">
+            <div class="col-12 col-md-8"></div>
+            <h2 class="contacto-mail">Datos de contacto</h2>
+            <input class="email" type="email" placeholder="Email">
+            <div class="div-entrega">
+                <input type="checkbox">
+                <h3 class="entrega">Entrega:</h3>
+                <div class="container-selector">
+                    <div class="selector"></div>
+                    <span class="span-retiro">
+                        <div class="div-retiro">
+                            <h3 class="retiro">Retiro Personal CABA</h3>
+                        </div>
+                        <div>
+                            <p>Retiras entre {fecha} </p>
+                        </div>
+                    </span>
+                </div>
+
+            </div>
+            <div class="datos-facturacion">
+                <h3 >Datos de facturacion</h3>
+                <select aria-placeholder="Pais" name="pais" id="pais"></select>
+                <input placeholder="DNI o CUIL" type="text" name="dni" id="dni">
+            </div>
+
+            <div class="persona-pedido">
+                <h4>Persona que pagara el pedido</h4>
+
+                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="text" name="apellido" placeholder="Apellido">
+                <input type="text" name="telefono" placeholder="Telefono" id="">
+            </div>
+
+            
+                <span class="selector-span">
+                    <div class="selector-chech"></div>
+                    <label for=""><input type="checkbox"></label>
+                    <h4>Otra pesona retirara el pedido</h4>
+                </span>
+            
+
+            <div class="domicilio-paga">
+                <div class="titulo-domicilio-paga">
+                    <h3>Domicilio de quien pagara el pedido</h3>
+                    <input type="text" class="calle" name="calle" placeholder="Calle">
+                    <div class="container-numero-domicilio">
+                <div class="numero-container">
+                    <input type="text" class="numero" name="number" placeholder="Numero">
+                <div class="departamento-container">
+                    <input type="text" class="departamento" name="departamento" placeholder="Departamento (Opcional)">
+                </div>
+            </div>
+                <div class="barrio-container">
+                    <input type="text" class="barrio" name="barrio" placeholder="Barrio (Opcional)">
+                    </div>
+                    <div class="ciudad-container">
+                    <input type="text" class="ciudad" name="ciudad" placeholder="Ciudad">
+                    </div>
+                    <input type="text" class="codigo" name="codigo-postal" placeholder="Codigo postal">
+                </div>
+            </div>
+
+            <div class="col-12 md-4"></div>
+
+        </div>
+    </section>
+
+    <script src="https://kit.fontawesome.com/6a57daf835.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
