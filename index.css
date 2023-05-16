@@ -22,6 +22,10 @@ header {
     
 }
 
+header .sticky{
+    background-color: #fff;
+}
+
 .logo {
     max-width: 120px;
     height: auto;

@@ -23,6 +23,10 @@ header {
     height: 10vh;
 }
 
+header .sticky{
+    background-color: #fff;
+}
+
 .logo {
     max-width: 120px;
     height: auto;
@@ -79,7 +83,7 @@ header {
     height: 100vh;
     display: flex;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 150px;
 }
 
 .container input{
@@ -239,6 +243,35 @@ input{
 }
 
 input:focus{
-    box-shadow:  0 0 20px;
+    box-shadow:  0 0 10px;
 }
 
+#enviar{
+    border: 0;
+    background-image: linear-gradient(150deg, rgb(101, 3, 192), gray, blueviolet);
+    margin-top: 10px ;
+    border-radius: 8px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 4px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#enviar span{
+    background-color: #111;
+    padding: 12px 25px;
+    border-radius: 6px;
+    transition: .3s;
+}
+
+#enviar:hover span{
+background: none;
+}
+
+#enviar:active{
+    transform: scale(0.9);
+}

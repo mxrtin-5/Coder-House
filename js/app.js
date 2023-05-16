@@ -1,3 +1,10 @@
+// barra de navegacion al scrollear
+const headerOnScroll = document.querySelector('header');
+
+window.addEventListener('scroll', function(){
+    headerOnScroll.classList.toggle('sticky', this.window.scrollY > 0);
+})
+
 // ---------------- counter seguidores ----------
 
 const counters = document.querySelectorAll(".counter");
