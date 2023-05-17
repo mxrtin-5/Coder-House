@@ -88,7 +88,7 @@ const modalContainer = document.getElementById('modal-container');
 const productosJson = '/productos.json'
 fetch (productosJson)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => renderizarCarrito(data))
 
 const renderizarCarrito = () => {
 
