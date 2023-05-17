@@ -1,0 +1,107 @@
+[
+    {
+        "id": 1,
+        "nombre": "Arkana Dress",
+        "img": "/img/1.jpg",
+        "precio": 50000,
+        "cantidad": 1
+    },
+    {
+        "id": 2,
+        "nombre": "Shadow Forest Dress",
+        "img":"/img/2.jpg",
+        "precio": 80000,
+        "cantidad": 1
+    },
+    {
+        "id": 3,
+        "nombre": "Monroe Dress",
+        "img":"/img/3.jpg",
+        "precio": 60000,
+        "cantidad": 1
+    },
+    {
+        "id": 4,
+        "nombre": "Living Dolls Dress",
+        "img":"/img/4.jpg",
+        "precio": 50000,
+        "cantidad": 1
+    },
+    {
+        "id": 5,
+        "nombre": "Prudence Dress",
+        "img":"/img/5.jpg",
+        "precio": 90000,
+        "cantidad": 1
+    },
+    {
+        "id": 6,
+        "nombre": "Moon Dress",
+        "img":"/img/6.jpg",
+        "precio": 40000,
+        "cantidad": 1
+    },
+    {
+        "id": 7,
+        "nombre": "Black Magic Dress",
+        "img":"/img/7.jpg",
+        "precio": 50000,
+        "cantidad": 1
+    },
+    {
+        "id": 8,
+        "nombre": "Minerva Dress",
+        "img":"/img/8.jpg",
+        "precio": 35000,
+        "cantidad": 1
+    },
+    {
+        "id": 9,
+        "nombre": "Darkfall Dress",
+        "img":"/img/9.jpg",
+        "precio": 26600,
+        "cantidad": 1
+    },
+    {
+        "id": 10,
+        "nombre": "Shivers Dress",
+        "img":"/img/10.jpg",
+        "precio": 28000,
+        "cantidad": 1
+    },
+    {
+        "id": 11,
+        "nombre": "Lifeia Dress",
+        "img":"/img/11.jpg",
+        "precio": 27500,
+        "cantidad": 1
+    },
+    {
+        "id": 12,
+        "nombre": "Naenia Dress",
+        "img":"/img/12.jpg",
+        "precio": 33000,
+        "cantidad": 1
+    },
+    {
+        "id": 13,
+        "nombre": "Orades Dress",
+        "img":"/img/13.jpg",
+        "precio": 35000,
+        "cantidad": 1
+    },
+    {
+        "id": 14,
+        "nombre": "Ghost Dress",
+        "img":"/img/14.jpg",
+        "precio": 46000,
+        "cantidad": 1
+    },
+    {
+        "id": 15,
+        "nombre": "Angel Dress",
+        "img":"/img/15.jpg",
+        "precio": 39000,
+        "cantidad": 1
+    }
+]

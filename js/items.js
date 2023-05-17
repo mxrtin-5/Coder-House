@@ -1,3 +1,4 @@
+/*
 class Producto {
     constructor(id, nombre, precio, cantidad){
         this.id = id
@@ -24,3 +25,4 @@ const vestido14 = new Producto ('14', 'Ghost Dress', 46000, 1);
 const vestido15 = new Producto ('15', 'Angel Dress', 39000, 1);
 
 const misProductos = [vestido1,vestido2,vestido3,vestido4,vestido5,vestido6,vestido7,vestido8,vestido9,vestido10,vestido11,vestido12,vestido13,vestido14,vestido15];
+*/

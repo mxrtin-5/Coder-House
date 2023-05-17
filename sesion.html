@@ -60,16 +60,30 @@
             </div>
             <div class="datos-facturacion">
                 <h3 >Datos de facturacion</h3>
-                <select aria-placeholder="Pais" name="pais" id="pais"></select>
-                <input placeholder="DNI o CUIL" type="text" name="dni" id="dni">
+                <select name="pais" id="pais">
+                    <option value="Argentina">Argentina</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Uruguay">Uruguay</option>
+                    <option value="Peru">Peru</option>
+                    <option value="Brail">Brail</option>
+                    <option value="Venezuela">Venezuela</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Paraguay">Paraguay</option>
+                    <option value="Ecuador">Ecuador</option></select>
+                
+
+                
+                <input placeholder="DNI o CUIL" id="dni" type="text" name="dni" id="dni">
+                <input type="Datos" placeholder="Datos bancarios" id="banco" name="datos">
             </div>
 
             <div class="persona-pedido">
                 <h4>Persona que pagara el pedido</h4>
 
-                <input type="text" name="nombre" placeholder="Nombre">
-                <input type="text" name="apellido" placeholder="Apellido">
-                <input type="text" name="telefono" placeholder="Telefono" id="">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                <input type="text" id="apellido" name="apellido" placeholder="Apellido">
+                <input type="text" id="telefono" name="telefono" placeholder="Telefono" id="">
             </div>
 
             
@@ -83,21 +97,21 @@
             <div class="domicilio-paga">
                 <div class="titulo-domicilio-paga">
                     <h3>Domicilio de quien pagara el pedido</h3>
-                    <input type="text" class="calle" name="calle" placeholder="Calle">
+                    <input type="text" id="calle" class="calle" name="calle" placeholder="Calle">
                     <div class="container-numero-domicilio">
                 <div class="numero-container">
-                    <input type="text" class="numero" name="number" placeholder="Numero">
+                    <input type="text" id="numero-calle" class="numero" name="number" placeholder="Numero">
                 <div class="departamento-container">
-                    <input type="text" class="departamento" name="departamento" placeholder="Departamento (Opcional)">
+                    <input type="text" id="departamento" class="departamento" name="departamento" placeholder="Departamento (Opcional)">
                 </div>
             </div>
                 <div class="barrio-container">
-                    <input type="text" class="barrio" name="barrio" placeholder="Barrio (Opcional)">
+                    <input type="text " id="barrio" class="barrio" name="barrio" placeholder="Barrio (Opcional)">
                     </div>
                     <div class="ciudad-container">
-                    <input type="text" class="ciudad" name="ciudad" placeholder="Ciudad">
+                    <input type="text" id="ciudad" class="ciudad" name="ciudad" placeholder="Ciudad">
                     </div>
-                    <input type="text" class="codigo" name="codigo-postal" placeholder="Codigo postal">
+                    <input type="text" id="codigo-postal" class="codigo" name="codigo-postal" placeholder="Codigo postal">
                 </div>
             </div>
 

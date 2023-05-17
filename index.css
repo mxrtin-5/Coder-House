@@ -661,6 +661,7 @@ header.sticky {
     top: 0;
     transition: .3s;
     background: rgb(206, 164, 245);
+    z-index: 100000;
 }
 
 .carrito {

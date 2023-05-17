@@ -23,7 +23,7 @@ header {
     height: 10vh;
 }
 
-header .sticky{
+.sticky{
     background-color: #fff;
 }
 
@@ -239,7 +239,7 @@ header .sticky{
 input{
     border-radius: 20px;
     border: 2px solid #000;
-    transition: all.3s ease;
+    transition: all .3s ease;
 }
 
 input:focus{
