@@ -438,6 +438,12 @@ header.sticky {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(380px, auto));
     gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.update-cart .imagen2{
+    margin-bottom: 45px;
 }
 
 .cart h5 {

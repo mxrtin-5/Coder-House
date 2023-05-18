@@ -72,6 +72,26 @@ formulario.addEventListener('submit', (item) => {
     
 });
 
+const entrega = document.getElementById('retiro')
+
+// Obtener la fecha actual
+const hoy = luxon.DateTime.now();
+
+// Obtener la fecha de una semana a partir de hoy
+const unaSemanaDespues = hoy.plus({ weeks: 1 });
+
+// Obtener la fecha de dos semanas a partir de hoy
+const dosSemanasDespues = hoy.plus({ weeks: 2 });
+
+// Formatear las fechas en el formato deseado
+const formato = "dd/MM/yyyy";
+
+const fechaUnaSemana = unaSemanaDespues.toFormat(formato);
+const fechaDosSemanas = dosSemanasDespues.toFormat(formato);
+
+// Mostrar las fechas
+entrega.innerText(`El envio llegara entre el ${fechaUnaSemana} y ${fechaDosSemanas}`)
+
 
 
 
