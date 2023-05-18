@@ -74,8 +74,11 @@ formulario.addEventListener('submit', (item) => {
 
 const entrega = document.getElementById('retiro')
 
+
+const { DateTime } = require('luxon');
+
 // Obtener la fecha actual
-const hoy = luxon.DateTime.now();
+const hoy = DateTime.now();
 
 // Obtener la fecha de una semana a partir de hoy
 const unaSemanaDespues = hoy.plus({ weeks: 1 });
