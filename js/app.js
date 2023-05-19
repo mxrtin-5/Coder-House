@@ -83,7 +83,7 @@ const shopContent = document.getElementById('shopContent');
 const verCarrito = document.getElementById('verCarrito');
 const modalContainer = document.getElementById('modal-container');
 
-const productosJson = '/productos.json'
+const productosJson = './productos.json'
 fetch (productosJson)
     .then(response => response.json())
     .then(data => cargarProductos(data))
