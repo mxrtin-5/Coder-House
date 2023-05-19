@@ -36,7 +36,7 @@ let h2 = document.querySelector('.center-text');
 let container = document.querySelector('body');
 let clientes = document.querySelector('.client-reviews');
 let contacto = document.querySelector('.contact');
-let footer = document.querySelector('.end-text');
+
 
 let mode = "light"
 
@@ -49,7 +49,6 @@ function lightMode() {
     container.className = 'body';
     clientes.className = 'client-reviews';
     contacto.className = 'contact';
-    footer.className = 'end-text';
 }
 
 function darkMode() {
@@ -60,8 +59,7 @@ function darkMode() {
     h2.className = 'dark-center-text h2';
     container.className = 'dark-body';
     clientes.className = 'dark-client-reviews';
-    contacto.className = 'dark-contact';
-    footer.className - 'dark-end-text';
+    contacto.className = 'dark-contact'
 
 }
 
