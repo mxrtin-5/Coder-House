@@ -28,51 +28,6 @@ counters.forEach(item => {
 
 // ------------------- modo oscuro -------------
 
-let boton = document.querySelector('.switch');
-let circulo = document.querySelector('.circulo');
-let header = document.querySelector('header');
-let productos = document.querySelector('.trending-product');
-let h2 = document.querySelector('.center-text');
-let container = document.querySelector('body');
-let clientes = document.querySelector('.client-reviews');
-let contacto = document.querySelector('.contact');
-
-
-let mode = "light"
-
-function lightMode() {
-    boton.className = 'switch';
-    circulo.className = 'circulo'
-    header.className = 'header';
-    productos.className = 'trending-product';
-    h2.className = 'center-text h2';
-    container.className = 'body';
-    clientes.className = 'client-reviews';
-    contacto.className = 'contact';
-}
-
-function darkMode() {
-    boton.className = 'dark-switch';
-    circulo.className = 'dark-circulo';
-    header.className = 'dark-header';
-    productos.className = 'dark-trending-product';
-    h2.className = 'dark-center-text h2';
-    container.className = 'dark-body';
-    clientes.className = 'dark-client-reviews';
-    contacto.className = 'dark-contact'
-
-}
-
-circulo.addEventListener('click', () => {
-    if (mode === 'light') {
-        darkMode()
-        mode = 'dark'
-    } else {
-        lightMode()
-        mode = 'light'
-    }
-})
-
 
 //Productos//
 
