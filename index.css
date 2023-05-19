@@ -95,6 +95,10 @@ header .sticky{
     color: #e2e1e1;
 }
 
+.succes{
+    color: black;
+}
+
 .switch {
     position: absolute;
     right: 25px;
@@ -207,6 +211,7 @@ header .sticky{
     border: 2px solid #000;
     box-shadow: none;
 }
+
 
 /* home */
 

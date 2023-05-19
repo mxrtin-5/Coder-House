@@ -217,6 +217,7 @@ function cargarProductos(array){
             // a comprar se le pasa un escuchador de eventos, el vento es el click
             Swal.fire({
                 icon: 'success',
+                class: 'succes',
                 title: 'Added to the cart',
                 timer: 1500
             })
