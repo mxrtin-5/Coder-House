@@ -89,7 +89,8 @@ const fechaUnaSemana = unaSemanaDespues.toFormat(format);
 const fechaDosSemanas = dosSemanasDespues.toFormat(format);
 
 
-entrega.innerHTML(`<p>Tu pedido llegara entre el ${fechaUnaSemana} y el ${fechaDosSemanas}</p>`)
+entrega.textContent = `Tu pedido llegara entre el ${fechaUnaSemana} y el ${fechaDosSemanas}`;
+
 
 
 /*
